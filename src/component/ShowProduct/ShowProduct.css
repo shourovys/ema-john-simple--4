@@ -51,6 +51,7 @@
   font-weight: 500;
   outline: none;
   background-image: linear-gradient(#f5d589, #efbc3b);
+  cursor: pointer;
 }
 .add-to-cart:hover {
   background-image: linear-gradient(#efbc3b, #f5d589);

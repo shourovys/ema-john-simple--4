@@ -46,6 +46,7 @@ const Product = () => {
                             product={product}
                             handelAddToCart={handelAddToCart}
                             showAddToCartBtn='true'
+                            nameLink="true"
                         ></ShowProduct>)
                 }
             </div>
