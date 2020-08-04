@@ -15,24 +15,10 @@ const Product = () => {
     const [cartProducts, setCartProducts] = useState([])
     // this function handel add-to-cart button even and update State
     let handelAddToCart = (cartProduct) => {
-        // let cartPdKey = cartProduct.key;
-        // let count = 1
-        // let newCartProducts
-        // let sameProduct = cartProducts.find(pd => pd.key === cartPdKey);
-        // if (sameProduct) {
-        //     count = count + 1;
-        //     sameProduct.quantity = count;
-
-        //     let otherAddedPd = productsData.fill(pd => pd.key !== cartPdKey)
-        //     newCartProducts = [...otherAddedPd, sameProduct]
-        // }
-        // else {
-        //     cartProduct.quantity = 1
-        //     newCartProducts = [...cartProducts, cartProduct] //take previous cartProducts & new cartProduct and update
-        // }
-        // setCartProducts(newCartProducts)
-        // addToDatabaseCart(cartProduct.key, count)
-        console.log(cartProduct);
+        let cartPdKey = cartProduct.key;
+        const newProduct = productsData.filter(product => product.key === cartPdKey)
+        const newCartProducts = [...cartProducts, newProduct]
+        setCartProducts(newCartProducts)
     }
 
 
@@ -64,16 +50,16 @@ const Product = () => {
                 }
             </div>
             <div className="cart">
-                {/* <Cart cartProducts={cartProducts}>
-                    <Link style={{
+                <Cart cartProducts={cartProducts}>
+                    {/* <Link style={{
                         margin: 'auto',
                         display: 'block',
                         width: '55%'
                     }}
-                        to="/OrderReview">
-                        <button className="add-to-cart">Order Review</button>
-                    </Link>
-                </Cart> */}
+                        to="/OrderReview"> */}
+                    <button className="add-to-cart">Order Review</button>
+                    {/* </Link> */}
+                </Cart>
 
             </div>
         </div>
