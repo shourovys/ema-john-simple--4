@@ -14,7 +14,7 @@ const Cart = (props) => {
         // } else {
         //     productPrice = productPrice + product.price
         // }
-        productPrice = productPrice + product[0].price
+        productPrice = productPrice + product.price
     })
 
 

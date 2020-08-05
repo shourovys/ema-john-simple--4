@@ -13,12 +13,15 @@ const Product = () => {
 
     // in this state ue set all add-to-cart product data
     const [cartProducts, setCartProducts] = useState([])
-    // this function handel add-to-cart button even and update State
+    // this function handel add-to-cart button even and update State && update local storage with key & quantity
     let handelAddToCart = (cartProduct) => {
         let cartPdKey = cartProduct.key;
-        const newProduct = productsData.filter(product => product.key === cartPdKey)
-        const newCartProducts = [...cartProducts, newProduct]
+        const newCartProducts = [...cartProducts, cartProduct]
         setCartProducts(newCartProducts)
+        const sameProduct = newCartProducts.filter(pd => pd.key === cartPdKey)
+        let count = sameProduct.length;
+        console.log(sameProduct);
+        addToDatabaseCart(cartPdKey, count)
     }
 
 
