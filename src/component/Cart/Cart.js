@@ -9,12 +9,11 @@ const Cart = (props) => {
 
     let productPrice = 0
     cartProducts.map(product => {
-        // if (product.quantity) {
-        //     productPrice = productPrice + product.price * product.quantity
-        // } else {
-        //     productPrice = productPrice + product.price
-        // }
-        productPrice = productPrice + product.price
+        if (product.quantity) {
+            productPrice = productPrice + product.price * product.quantity
+        } else {
+            productPrice = productPrice + product.price
+        }
     })
 
 

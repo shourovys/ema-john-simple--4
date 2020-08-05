@@ -16,27 +16,36 @@ const Product = () => {
     // this function handel add-to-cart button even and update State && update local storage with key & quantity
     let handelAddToCart = (cartProduct) => {
         let cartPdKey = cartProduct.key;
-        const newCartProducts = [...cartProducts, cartProduct]
-        setCartProducts(newCartProducts)
-        const sameProduct = newCartProducts.filter(pd => pd.key === cartPdKey)
-        let count = sameProduct.length;
-        console.log(sameProduct);
-        addToDatabaseCart(cartPdKey, count)
+        const ifProduct = cartProducts.find(pd => pd.key === cartPdKey)//find will return -> is this product already present in cartProduct state
+        let count = 0
+        if (ifProduct) {//if product is present -- then i incrise the value of count and quantity
+            count = cartProduct.quantity + 1;
+            cartProduct.quantity = count;
+            const otherProduct = cartProducts.filter(pd => pd.key !== cartPdKey)//get other products where is cartProduct is not present
+            setCartProducts([...otherProduct, cartProduct])
+        }
+        else {////if product is not present
+            count = 1;
+            cartProduct.quantity = count;
+            setCartProducts([...cartProducts, cartProduct])
+        }
+        addToDatabaseCart(cartPdKey, cartProduct.quantity)
+
     }
 
 
-    // useEffect(() => {
-    //     // take data form localStorage by getDatabaseCart() 
-    //     const products = getDatabaseCart()
-    //     let productKey = Object.keys(products);
-    //     let orderProduct = productKey.map(key => {
-    //         let product = fakeData.find(pd => pd.key === key);
-    //         product.quantity = products[key] // add count value in every OrderReview Products
-    //         return product
-    //     })
-    //     setCartProducts(orderProduct);
+    useEffect(() => {
+        // take data form localStorage by getDatabaseCart() 
+        const products = getDatabaseCart()
+        let productKey = Object.keys(products);
+        let orderProduct = productKey.map(key => {
+            let product = fakeData.find(pd => pd.key === key);
+            product.quantity = products[key] // add count value in every OrderReview Products
+            return product
+        })
+        setCartProducts(orderProduct);
 
-    // }, [])
+    }, [])
 
     return (
         <div className="container">
