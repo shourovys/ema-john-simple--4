@@ -56,7 +56,7 @@ const Cart = (props) => {
             <hr></hr>
             <p><samp>Total Price :</samp> <samp className="textRight">{makeNun2digit(grandTotal)}</samp></p>
 
-
+            {props.children}
 
         </div>
     );

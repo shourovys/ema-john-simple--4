@@ -37,10 +37,10 @@ const OrderReview = () => {
         setOrderProducts([])
     }
 
-    //     let happy;
-    //     if (OrderPlace) {
-    //         happy = <img src={happyImage} />
-    //     }
+    // let happy;
+    // if (OrderPlace) {
+    //     happy = <img src={happyImage} />
+    // }
 
 
     return (
@@ -67,6 +67,7 @@ const OrderReview = () => {
                         }}
                         onClick={handelOrderPlace} className="add-to-cart">Order Place</button>
                 </Cart>
+
             </div >
         </div >
 

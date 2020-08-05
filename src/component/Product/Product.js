@@ -64,14 +64,14 @@ const Product = () => {
             </div>
             <div className="cart">
                 <Cart cartProducts={cartProducts}>
-                    {/* <Link style={{
+                    <Link style={{
                         margin: 'auto',
                         display: 'block',
                         width: '55%'
                     }}
-                        to="/OrderReview"> */}
-                    <button className="add-to-cart">Order Review</button>
-                    {/* </Link> */}
+                        to="/OrderReview">
+                        <button className="add-to-cart">Order Review</button>
+                    </Link>
                 </Cart>
 
             </div>
