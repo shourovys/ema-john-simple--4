@@ -15,6 +15,7 @@ const Navbar = () => {
                 <li className="nav-item"><a href="/UpComing">Up coming</a></li>
 
             </ul>
+
         </div>
     );
 };

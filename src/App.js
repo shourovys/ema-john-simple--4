@@ -12,6 +12,7 @@ import UpComing from './component/UpComing/UpComing';
 import NotFound from './component/NotFound/NotFound';
 import OrderReview from './component/OrderReview/OrderReview';
 import ProductDites from './component/ProductDites/ProductDites';
+import Login from './component/Login/Login';
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route exact path="/product/:productKey">
             <ProductDites></ProductDites>
+          </Route>
+          <Route path="/login">
+            <Login></Login>
           </Route>
           <Route path="*">
             <NotFound></NotFound>
