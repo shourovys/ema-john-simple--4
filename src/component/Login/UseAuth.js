@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
 import { useEffect } from "react";
+import { Route, Redirect } from "react-router-dom";
 
 
 // ineselize firebase app
@@ -31,8 +32,29 @@ const getUser = (user) => {
         img: photoURL,
         email: email
     }
+}
 
+// decluer a private route
+export function PrivateRoute({ children, ...rest }) {
+    const auth = useAuth()
 
+    return (
+        <Route
+            {...rest}
+            render={({ location }) =>
+                auth.user ? (
+                    children
+                ) : (
+                        <Redirect
+                            to={{
+                                pathname: "/login",
+                                state: { from: location }
+                            }}
+                        />
+                    )
+            }
+        />
+    );
 }
 
 
@@ -44,7 +66,7 @@ const Auth = () => {
         // google sine in marthard
         var provider = new firebase.auth.GoogleAuthProvider();
 
-        firebase.auth().signInWithPopup(provider)
+        return firebase.auth().signInWithPopup(provider)
             .then(function (result) {
                 const newUser = getUser(result.user)
                 setUser(newUser)

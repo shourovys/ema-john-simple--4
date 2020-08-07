@@ -6,6 +6,7 @@ import ReviewItem from '../ReviewItem/ReviewItem';
 import Cart from '../Cart/Cart';
 import happyImage from '../../images/giphy.gif';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../Login/UseAuth';
 
 const OrderReview = () => {
     // in this useState i store OrderProduct those take form localStorage by useEffect
@@ -42,6 +43,8 @@ const OrderReview = () => {
     // if (OrderPlace) {
     //     happy = <img src={happyImage} />
     // }
+    const auth = useAuth()
+
 
 
     return (
@@ -68,12 +71,20 @@ const OrderReview = () => {
                         }}
                         onClick={handelOrderPlace} className="add-to-cart">Order Place</button> */}
 
-                    <Link to="/shipment"><button style={{
-                        margin: 'auto',
-                        display: 'block',
-                        width: '55%'
-                    }}
-                        className="add-to-cart">Proceed chalkOut</button></Link>
+                    <Link to="/shipment">{auth.user ?
+                        <button style={{
+                            margin: 'auto',
+                            display: 'block',
+                            width: '55%'
+                        }}
+                            className="add-to-cart">Proceed chalkOut</button> :
+                        <button
+                            style={{
+                                margin: 'auto',
+                                display: 'block',
+                                width: '55%'
+                            }}
+                            onClick={handelOrderPlace} className="add-to-cart">Login to chockOut</button>}</Link>
                 </Cart>
 
             </div >

@@ -13,7 +13,7 @@ import NotFound from './component/NotFound/NotFound';
 import OrderReview from './component/OrderReview/OrderReview';
 import ProductDites from './component/ProductDites/ProductDites';
 import Login from './component/Login/Login';
-import { AuthContextProvider } from './component/Login/UseAuth';
+import { AuthContextProvider, PrivateRoute } from './component/Login/UseAuth';
 import Shipment from './component/Shipment/Shipment';
 
 function App() {
@@ -41,9 +41,9 @@ function App() {
             <Route path="/login">
               <Login></Login>
             </Route>
-            <Route path="/shipment">
+            <PrivateRoute path="/shipment">
               <Shipment></Shipment>
-            </Route>
+            </PrivateRoute>
             <Route path="*">
               <NotFound></NotFound>
             </Route>
