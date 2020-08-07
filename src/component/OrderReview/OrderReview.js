@@ -5,6 +5,7 @@ import fakeData from '../../fakeData';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import Cart from '../Cart/Cart';
 import happyImage from '../../images/giphy.gif';
+import { Link } from 'react-router-dom';
 
 const OrderReview = () => {
     // in this useState i store OrderProduct those take form localStorage by useEffect
@@ -59,13 +60,20 @@ const OrderReview = () => {
 
             <div className="cart">
                 <Cart cartProducts={orderProducts}>
-                    <button
+                    {/* <button
                         style={{
                             margin: 'auto',
                             display: 'block',
                             width: '55%'
                         }}
-                        onClick={handelOrderPlace} className="add-to-cart">Order Place</button>
+                        onClick={handelOrderPlace} className="add-to-cart">Order Place</button> */}
+
+                    <Link to="/shipment"><button style={{
+                        margin: 'auto',
+                        display: 'block',
+                        width: '55%'
+                    }}
+                        className="add-to-cart">Proceed chalkOut</button></Link>
                 </Cart>
 
             </div >

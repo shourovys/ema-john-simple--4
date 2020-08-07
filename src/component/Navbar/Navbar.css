@@ -4,6 +4,37 @@
   width: 265px;
   margin: auto;
 }
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+  height: 44px;
+}
+.user {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+.user h4 {
+  color: whitesmoke;
+  text-decoration: none;
+  outline: none;
+}
+.login {
+  margin: 0px !important;
+}
+.img {
+  border-radius: 50%;
+  border: 2px solid white;
+  height: 38px;
+  margin: 5px;
+}
+.nav {
+  display: flex;
+  align-items: center;
+}
 .nav-item-container {
   display: flex;
   align-items: center;
