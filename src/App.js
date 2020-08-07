@@ -20,8 +20,9 @@ function App() {
   return (
     <div className="App">
       <AuthContextProvider>
-        <Navbar></Navbar>
+
         <Router>
+          <Navbar></Navbar>
           <Switch>
             <Route exact path="/product">
               <Product></Product>
