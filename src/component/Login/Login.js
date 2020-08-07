@@ -18,7 +18,6 @@ const Login = () => {
         auth.sineOut()
             .then(res => {
                 window.location.pathname = "/"
-                console.log("log out complit")
             })
     }
 
