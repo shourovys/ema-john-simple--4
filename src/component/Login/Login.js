@@ -13,13 +13,22 @@ const Login = () => {
             })
     }
 
+    // tihs function will handel is user logOUt -- then user will return in the home Page
+    const handelLogOut = () => {
+        auth.sineOut()
+            .then(res => {
+                window.location.pathname = "/"
+                console.log("log out complit")
+            })
+    }
+
 
 
     return (
         <div className="sineIn">
             <h3>join with us</h3>
             {
-                auth.user ? <button onClick={auth.sineOut} className="add-to-cart">Sine Out</button> : <button onClick={handelSineIn} className="add-to-cart">sine in with google</button>
+                auth.user ? <button onClick={handelLogOut} className="add-to-cart">Sine Out</button> : <button onClick={handelSineIn} className="add-to-cart">sine in with google</button>
             }
 
         </div>

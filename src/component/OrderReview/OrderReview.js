@@ -59,6 +59,7 @@ const OrderReview = () => {
                     removeItemFormReview={removeItemFormReview}
                 ></ReviewItem>)}
                 {/* {happy} */}
+                {orderProducts.length == 0 && <h2>Your cart is empty</h2>}
             </div>
 
             <div className="cart">

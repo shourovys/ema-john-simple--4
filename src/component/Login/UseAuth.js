@@ -81,7 +81,7 @@ const Auth = () => {
             });
     }
     const sineOut = () => {
-        firebase.auth().signOut().then(function () {
+        return firebase.auth().signOut().then(function () {
             setUser(null)
         }).catch(function (error) {
             // An error happened.
