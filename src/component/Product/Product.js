@@ -7,9 +7,16 @@ import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseMana
 import { Link } from 'react-router-dom';
 
 const Product = () => {
+    const [productsData, setProductsData] = useState([])
+    //take data form database
+    useEffect(() => {
+        fetch("http://localhost:3000/products")
+            .then(res => res.json())
+            .then(data => setProductsData(data))
+    }, [])
+
     // take data form fakeData and store in useState
-    const fast10 = fakeData.slice(0, 10)
-    const [productsData, setProductsData] = useState(fast10)
+    // const fast10 = fakeData.slice(0, 10)
 
     // in this state ue set all add-to-cart product data
     const [cartProducts, setCartProducts] = useState([])
@@ -38,14 +45,16 @@ const Product = () => {
         // take data form localStorage by getDatabaseCart() 
         const products = getDatabaseCart()
         let productKey = Object.keys(products);
-        let orderProduct = productKey.map(key => {
-            let product = fakeData.find(pd => pd.key === key);
-            product.quantity = products[key] // add count value in every OrderReview Products
-            return product
-        })
-        setCartProducts(orderProduct);
+        if (productsData.length) {
+            let orderProduct = productKey.map(key => {
+                let product = productsData.find(pd => pd.key === key);
+                product.quantity = products[key] // add count value in every OrderReview Products
+                return product
+            })
+            setCartProducts(orderProduct);
+        }
 
-    }, [])
+    }, [productsData])
 
     return (
         <div className="container">

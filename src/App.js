@@ -8,7 +8,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import UpComing from './component/UpComing/UpComing';
+import Inventory from './component/Inventory/Inventory';
 import NotFound from './component/NotFound/NotFound';
 import OrderReview from './component/OrderReview/OrderReview';
 import ProductDites from './component/ProductDites/ProductDites';
@@ -30,8 +30,8 @@ function App() {
             <Route path="/OrderReview">
               <OrderReview></OrderReview>
             </Route>
-            <Route path="/UpComing">
-              <UpComing></UpComing>
+            <Route path="/inventory">
+              <Inventory></Inventory>
             </Route>
             <Route exact path="/">
               <Product></Product>

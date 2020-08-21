@@ -19,7 +19,7 @@ const Navbar = () => {
                     <ul className="nav-item-container">
                         <li className="nav-item"><Link to="/product">Product</Link></li>
                         <li className="nav-item"><Link to="/OrderReview">Order Review</Link></li>
-                        <li className="nav-item"><Link to="/UpComing">Up coming</Link></li>
+                        <li className="nav-item"><Link to="/inventory">Inventory</Link></li>
                         {/* <li className="nav-item"><a href="/OrderReview">Order Review</a></li>
                         <li className="nav-item"><a href="/UpComing">Up coming</a></li> */}
                     </ul>

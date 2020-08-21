@@ -1,0 +1,8 @@
+.shipment-form form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  line-height: 22px;
+}

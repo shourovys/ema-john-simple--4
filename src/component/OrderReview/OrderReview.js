@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './OrderReview.css'
 import { getDatabaseCart, removeFromDatabaseCart, processOrder } from '../../utilities/databaseManager';
-import fakeData from '../../fakeData';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import Cart from '../Cart/Cart';
 import happyImage from '../../images/giphy.gif';
@@ -18,12 +17,23 @@ const OrderReview = () => {
         // take data form localStorage by getDatabaseCart() 
         const products = getDatabaseCart()
         let productKey = Object.keys(products);
-        let orderProduct = productKey.map(key => {
-            let product = fakeData.find(pd => pd.key === key);
-            product.quantity = products[key] // add count value in every OrderReview Products as a property
-            return product
+        fetch('http://localhost:3000/getProductByKey', {
+            method: "POST",
+            body: JSON.stringify(productKey),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
-        setOrderProducts(orderProduct);
+            .then(res => res.json())
+            .then(data => {
+
+                let orderProduct = productKey.map(key => {
+                    let product = data.find(pd => pd.key === key);
+                    product.quantity = products[key] // add count value in every OrderReview Products as a property
+                    return product
+                })
+                setOrderProducts(orderProduct);
+            })
     }, [])
 
     // this function handel remove product form ReviewItem
@@ -33,11 +43,6 @@ const OrderReview = () => {
         removeFromDatabaseCart(key)//this remove product key for localStorage
     }
 
-    // handelOrderPlace() clear localstorage and clear state
-    const handelOrderPlace = () => {
-        processOrder()
-        setOrderProducts([])
-    }
 
     // let happy;
     // if (OrderPlace) {
@@ -85,7 +90,7 @@ const OrderReview = () => {
                                 display: 'block',
                                 width: '55%'
                             }}
-                            onClick={handelOrderPlace} className="add-to-cart">Login to chockOut</button>}</Link>
+                            className="add-to-cart">Login to chockOut</button>}</Link>
                 </Cart>
 
             </div >
